@@ -1,3 +1,6 @@
+## [1.1.0] - 2019-11-21
+* upgrade to flutter 2.0
+
 ## [1.0.1] - 2019-11-21
 
 * remove huge top padding
