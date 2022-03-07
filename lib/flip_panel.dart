@@ -343,7 +343,8 @@ class FlipClock extends StatelessWidget {
           Padding(
             padding: spacing,
             child: FlipPanel<int>.stream(
-              itemStream: timeStream.map<int>(tensDigit as int Function(DateTime?)),
+              itemStream:
+                  timeStream.map<int>(tensDigit as int Function(DateTime?)),
               itemBuilder: _digitBuilder,
               duration: const Duration(milliseconds: 450),
               initValue: tensDigit(startTime),
@@ -353,7 +354,8 @@ class FlipClock extends StatelessWidget {
           Padding(
             padding: spacing,
             child: FlipPanel<int>.stream(
-              itemStream: timeStream.map<int>(onesDigit as int Function(DateTime?)),
+              itemStream:
+                  timeStream.map<int>(onesDigit as int Function(DateTime?)),
               itemBuilder: _digitBuilder,
               duration: const Duration(milliseconds: 450),
               initValue: onesDigit(startTime),
@@ -554,7 +556,9 @@ class _FlipPanelState<T> extends State<FlipPanel>
       _timer = Timer.periodic(widget.period!, (_) {
         if (widget.loop! < 0 || _loop! < widget.loop!) {
           if (_currentIndex! + 1 == widget.itemsCount! - 2) {
-            _loop++;
+            if (_loop != null) {
+              _loop = _loop! + 1;
+            }
           }
           _currentIndex = (_currentIndex! + 1) % widget.itemsCount!;
           _child1 = null;
